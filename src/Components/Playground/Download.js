@@ -7,7 +7,7 @@ export default function Download({ list }) {
     // In my case, I have an array, and each item in
     // the array should be on a new line, which is why
     // I use .join('\n') here.
-    const data = new Blob([list], { type: "application/json" });
+    const data = new Blob([list], { type: "application/js" });
 
     // this part avoids memory leaks
     if (downloadLink !== "") window.URL.revokeObjectURL(downloadLink);
@@ -16,13 +16,13 @@ export default function Download({ list }) {
     setDownloadLink(window.URL.createObjectURL(data));
   };
 
-  // Call the function if list changes
   useEffect(() => {
     makeTextFile();
+    // eslint-disable-next-line
   }, [list]);
 
   return (
-    <a download="color.json" href={downloadLink}>
+    <a download="tailwindconfig.js" href={downloadLink}>
       download
     </a>
   );
