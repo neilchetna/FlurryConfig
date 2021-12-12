@@ -27,7 +27,7 @@ export default function ColorList() {
       </div>
       <div className="rounded-md max-h-72 overflow-scroll  shadoe-md">
         {colors.map((color, index) => (
-          <Block key={index} hex={color.hex} />
+          <Block key={index} hex={color.hex} color={color.name} />
         ))}
       </div>
     </div>
@@ -48,7 +48,3 @@ function Block(props) {
     </div>
   );
 }
-
-Block.defaultProps = {
-  color: "red",
-};
