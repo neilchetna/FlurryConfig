@@ -2,7 +2,16 @@ import React, { createContext, useReducer } from "react";
 import ColorReducer from "./ColorReducer";
 
 const initialState = {
-  colors: [],
+  colors: [
+    {
+      hex: "#333333",
+      id: 1,
+    },
+    {
+      hex: "#000000",
+      id: 2,
+    },
+  ],
 };
 
 export const ColorContext = createContext(initialState);
