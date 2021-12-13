@@ -19,6 +19,8 @@ export const ColorContext = createContext(initialState);
 export const ColorProvider = ({ children }) => {
   const [state, dispatch] = useReducer(ColorReducer, initialState);
 
+  console.log(ColorReducer);
+
   function addColors(color) {
     dispatch({
       type: "ADD_COLORS",
@@ -26,8 +28,17 @@ export const ColorProvider = ({ children }) => {
     });
   }
 
+  function deleteColors(id) {
+    dispatch({
+      type: "DELETE_COLORS",
+      payload: id,
+    });
+  }
+
   return (
-    <ColorContext.Provider value={{ colors: state.colors, addColors }}>
+    <ColorContext.Provider
+      value={{ colors: state.colors, addColors, deleteColors }}
+    >
       {children}
     </ColorContext.Provider>
   );

@@ -1,17 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ColorContext } from "Components/Context/ColorProvider";
 import { IoIosAdd } from "react-icons/io";
+import { AiFillDelete } from "react-icons/ai";
+import Modal from "./Modal";
 
 export default function ColorList() {
-  const { colors, addColors } = useContext(ColorContext);
+  const { colors, deleteColors } = useContext(ColorContext);
+  const [modal, setModal] = useState(false);
 
-  function handleColor(e) {
+  function handleModal(e) {
     e.preventDefault();
-    const newColor = {
-      hex: "#FEDE01",
-      id: 5,
-    };
-    addColors(newColor);
+    setModal((prev) => !prev);
   }
 
   return (
@@ -19,31 +18,49 @@ export default function ColorList() {
       <div className="p-2 bg-white flex flex-row items-center justify-between">
         <p className="text-xl font-semibold text-gray-600">Color Palette</p>
         <button
-          onClick={handleColor}
-          className="flex flex-row items-center px-3 font-bold bg-purple-100 text-purple-500 hover:bg-purple-200 rounded-md"
+          onClick={handleModal}
+          className="flex flex-row items-center px-3 font-bold bg-purple-100 hover:bg-purple-200 rounded-md"
         >
           <IoIosAdd className="text-purple-600 text-2xl" />
         </button>
       </div>
-      <div className="rounded-md max-h-72 overflow-scroll  shadoe-md">
+      <div className="rounded-md max-h-72 overflow-scroll  shadoe-md scroll-box">
         {colors.map((color, index) => (
-          <Block key={index} hex={color.hex} color={color.name} />
+          <Block key={index} colors={color} />
         ))}
       </div>
+      <Modal modalState={modal} setModalState={setModal} />
     </div>
   );
 }
 
 function Block(props) {
+  const { deleteColors } = useContext(ColorContext);
+
+  function handleDelete(e) {
+    e.preventDefault();
+
+    deleteColors(props.colors.id);
+  }
+
   return (
-    <div className="ring-1 m-1 w-56 ring-black p-1 ring-opacity-10 rounded-md flex flex-row hover:bg-slate-50 items-center justify-between">
-      <div
-        className="w-11 h-11 rounded-md"
-        style={{ backgroundColor: props.hex }}
-      ></div>
+    <div className="ring-1 m-1 w-56 ring-black p-1 ring-opacity-10 rounded-md flex flex-row hover:bg-slate-50 items-center justify-between parent">
+      <div className="flex flex-row gap-3">
+        <div
+          className="w-11 h-11 rounded-md"
+          style={{ backgroundColor: props.colors.hex }}
+        ></div>
+        <button onClick={handleDelete}>
+          <AiFillDelete size={"1.2em"} className="" />
+        </button>
+      </div>
       <div className="text-right">
-        <p className="text-lg font-semibold text-gray-600">{props.color}</p>
-        <p className="text-xs font-semibold text-gray-400">{props.hex}</p>
+        <p className="text-lg font-semibold text-gray-600">
+          {props.colors.name}
+        </p>
+        <p className="text-xs font-semibold text-gray-400">
+          {props.colors.hex}
+        </p>
       </div>
     </div>
   );

@@ -4,14 +4,13 @@ import { ColorPicker, useColor } from "react-color-palette";
 import { ColorContext } from "Components/Context/ColorProvider";
 // import "react-color-palette/lib/css/styles.css";
 
-export default function Modal() {
-  const [modal, setModal] = useState(false);
+export default function Modal({ modalState, setModalState }) {
   const [input, setInput] = useState("");
   const [color, setColor] = useColor("hex", "#121212");
   const { addColors } = useContext(ColorContext);
 
   function handleModal() {
-    setModal(!modal);
+    setModalState((prev) => !prev);
   }
 
   function handleColor(e) {
@@ -20,17 +19,17 @@ export default function Modal() {
     const data = {
       hex: color.hex,
       name: input,
+      id: Math.floor(Math.random() * 100000000),
     };
 
     console.log(data);
     addColors(data);
     setInput("");
-    handleModal();
+    setModalState((prev) => !prev);
   }
   return (
     <>
-      <button onClick={handleModal}>Press</button>
-      <Dialog open={modal} onClose={handleModal}>
+      <Dialog open={modalState} onClose={handleModal}>
         <Dialog.Overlay
           as="div"
           className="bg-black w-screen h-screen fixed inset-0 bg-opacity-20 flex items-center justify-center"
@@ -47,8 +46,8 @@ export default function Modal() {
             <form onSubmit={handleColor}>
               <input required onChange={(e) => setInput(e.target.value)} />
               <button type="submit">activate</button>
+              <button onClick={handleModal}>Cancel</button>
             </form>
-            <button onClick={handleModal}>Cancel</button>
           </div>
         </Dialog.Overlay>
       </Dialog>
