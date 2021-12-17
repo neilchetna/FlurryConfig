@@ -14,7 +14,7 @@ export default function ColorList() {
   }
 
   return (
-    <div className="ring-2 ring-black ring-opacity-5 rounded-md shadow mt-14 p-1 relative h-4/5">
+    <div className="ring-2 ring-black ring-opacity-5 rounded-md shadow p-1 relative grow">
       <div className="p-1 bg-white flex flex-row items-center justify-between">
         <p className="text-xl font-semibold text-gray-600">Color Palette</p>
         <button

@@ -66,7 +66,7 @@ function DownloadAttribute({ colors, Switch }) {
 
   const twFormat = colors
     .map((color) => {
-      return [color.name, ": ", color.hex];
+      return [color.name, ": ", color.hex].join("");
     })
     .join("\n");
 
