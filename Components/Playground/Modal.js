@@ -49,14 +49,14 @@ export default function Modal({ modalState, setModalState }) {
               </label>
               <div className="ring-1 mx-2 mb-2 w-56 ring-black ring-opacity-10 rounded-md flex flex-row hover:bg-slate-50 items-center justify-between parent group relative">
                 <input
-                  className="w-full h-full px-3 py-2 rounded-md text-md font-semibold  placeholder-gray-400 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 focus:outline-none"
+                  className="w-full h-full px-3 py-2 rounded-md text-md font-semibold  placeholder-slate-400 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 focus:outline-none"
                   required
                   placeholder="color"
                   onChange={(e) => setInput(e.target.value)}
                 />
                 <span
                   style={{ background: color.hex }}
-                  className="w-8 h-8 absolute right-[0.125rem] rounded-full"
+                  className="w-8 h-8 absolute right-[0.125rem] rounded-md"
                 ></span>
               </div>
               <div className="flex gap-4 flex-row justify-center mt-3 w-full ">

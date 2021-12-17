@@ -4,14 +4,17 @@ import ColorReducer from "./ColorReducer";
 const initialState = {
   colors: [
     {
-      name: "dark gray",
-      hex: "#333333",
+      name: "purple",
+      hex: "#a855f7",
       id: 1,
     },
     {
-      name: "black",
-      hex: "#000000",
-      id: 2,
+      name: "white",
+      hex: "#ffffff",
+    },
+    {
+      name: "gray",
+      hex: "#e2e8f0",
     },
   ],
 };

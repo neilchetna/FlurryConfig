@@ -16,7 +16,7 @@ export default function ColorList() {
   return (
     <div className="ring-2 ring-black ring-opacity-5 rounded-md shadow p-1 relative grow">
       <div className="p-1 bg-white flex flex-row items-center justify-between">
-        <p className="text-xl font-semibold text-gray-600">Color Palette</p>
+        <p className="text-xl font-semibold text-gray-500">Color Palette</p>
         <button
           onClick={handleModal}
           className="flex flex-row items-center px-3 font-semibold bg-purple-100 h-8 text-purple-700 hover:bg-purple-200 rounded-md"
@@ -24,7 +24,7 @@ export default function ColorList() {
           <IoIosAdd className="text-purple-600 text-2xl" /> Add
         </button>
       </div>
-      <div className="rounded-md max-h-72 overflow-scroll  shadoe-md scroll-box">
+      <div className="rounded-md h-full overflow-scroll  shadoe-md scroll-box">
         {colors.map((color, index) => (
           <Block key={index} colors={color} />
         ))}
