@@ -34,7 +34,7 @@ export default function Modal({ modalState, setModalState }) {
           as="div"
           className="bg-black w-screen h-screen fixed inset-0 bg-opacity-20 flex items-center justify-center"
         >
-          <div className="bg-white rounded-md p-3">
+          <div className="bg-white rounded-md p-3 flex flex-col justify-center items-center gap-2">
             <ColorPicker
               color={color}
               width={200}
